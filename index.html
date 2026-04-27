@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Styling Practice</title>
+    <style>
+        /* 容器：僅作簡單的橫向置中並排 */
+        .image-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px; 
+        }
+
+        /* --- 1. 左側圖片的新增「相框」 --- */
+        .img-left-wrapper {
+            width: 33%;
+            height: 300px;
+            border-radius: 18px; /* 圓角設定在外框上 */
+            overflow: hidden;    /* 關鍵：把圖片放大後超出外框的部分裁切隱藏 */
+        }
+
+        /* 左側圖片本身：放大裡面的內容 */
+        .img-left {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.5); /* 關鍵：將圖片內容放大 1.5 倍 (數值可自由調整) */
+            transform-origin: center bottom; /* 讓圖片從正下方為中心放大，避免鐵塔底座被切掉 */
+        }
+
+        /* 2. 中間圖片：寬 150px, border(radius) 150px, no distortion */
+        .img-center {
+            width: 150px;
+            height: 150px;
+            border-radius: 150px;
+            object-fit: cover;    
+        }
+
+        /* 3. 右側圖片：width 33%, height 300px, distortion */
+        .img-right {
+            width: 33%;
+            height: 300px;
+            /* 強制壓縮進 300px 高度，導致變形 */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="image-container">
+        
+        <div class="img-left-wrapper">
+            <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=500" alt="巴黎鐵塔-左" class="img-left">
+        </div>
+        
+        <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=300" alt="峽谷-中" class="img-center">
+        
+        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=500" alt="巴黎鐵塔-右" class="img-right">
+    </div>
+
+</body>
+</html>
